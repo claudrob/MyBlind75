@@ -9,6 +9,24 @@ public class BestTimeToBuyAndSellStock {
         System.out.println(test.maxProfit(prices));
     }
 
+    public int maxProfitSolution2(int[] prices) {
+        if(prices.length == 1) return 0;
+
+        int profit = 0;
+        int left = 0;
+        int right = 1;
+
+        for(right = 1; right < prices.length; right++){
+            if(prices[right] > prices[left] ){
+                profit = Math.max(profit, (prices[right] - prices[left]));
+            }else{
+                left = right;
+            }
+        }
+
+        return profit;
+    }
+
     public int maxProfit(int[] prices) {
         int profit = 0;
         int buy = prices[0];
